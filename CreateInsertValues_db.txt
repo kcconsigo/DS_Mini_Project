@@ -1,0 +1,211 @@
+Table name: Member
+
+Create Table Members(Member_Num int not null Primary Key,Member_Name varchar(50)not null); 
+
+Insert into Members(Member_Num,Member_Name) 
+Values(211, 'Alice B. VanderVoort');
+
+Insert into Members(Member_Num,Member_Name) 
+Values(212, 'Gerald M. Gallega');
+
+Insert into Members(Member_Num,Member_Name) 
+Values(213, 'Shawn Ashmoore');
+
+Insert into Members(Member_Num,Member_Name) 
+Values(214, 'Abhishek Singh');
+
+Insert into Members(Member_Num,Member_Name) 
+Values(215, 'Dinesh Kumar');
+
+Insert into Members(Member_Num,Member_Name) 
+Values(216, 'Robert James D. Reid');
+
+Insert into Members(Member_Num,Member_Name) 
+Values(217, 'Matthew P. Evans');
+
+Insert into Members(Member_Num,Member_Name) 
+Values(218, 'Kclyn C.Cabelin');
+
+Insert into Members(Member_Num,Member_Name) 
+Values(219, 'Dominique Roque');
+
+Insert into Members(Member_Num,Member_Name) 
+Values(220, 'Patrick Rikko S.Collantes');
+
+
+Table name: Member_Place
+
+Create Table Member_Place(Member_Address nvarchar(50) not null, Member_City varchar(50) not null, Member_Zipcode int not null);
+
+Insert into Member_Place(Member_Address,Member_City,Member_Zipcode)
+Values('325 Meadow Park','Murkywater',12345);
+
+Insert into Member_Place(Member_Address,Member_City,Member_Zipcode)
+Values('214 Meadow Park','123 Rose Court',12349);
+
+Insert into Member_Place(Member_Address,Member_City,Member_Zipcode)
+Values('214 Meadow Park','Murkywater',12345);
+
+Insert into Member_Place(Member_Address,Member_City,Member_Zipcode)
+Values('Varanassi','Uttar Pradesh',02732);
+
+Insert into Member_Place(Member_Address,Member_City,Member_Zipcode)
+Values('21 Kerala','India',25712);
+
+Insert into Member_Place(Member_Address,Member_City,Member_Zipcode)
+Values('201 Sydney Harbor Beach','Sydney',23347);
+
+Insert into Member_Place(Member_Address,Member_City,Member_Zipcode)
+Values('Commonwealth','Quezon City',1034);
+
+Insert into Member_Place(Member_Address,Member_City,Member_Zipcode)
+Values('Santolan','Pasig City',1016);
+
+Insert into Member_Place(Member_Address,Member_City,Member_Zipcode)
+Values('General Trias','Cavite',4107);
+
+Insert into Member_Place(Member_Address,Member_City,Member_Zipcode)
+Values('Caniogan','Pasig City',1011);
+
+
+
+
+Table name: Invite
+
+Create Table Invite(Invite_Num int not null Primary Key, Invite_Date varchar(20)not null, Accept_Date varchar(20)not null,Member_Num int not null Foreign Key References Members(Member_Num));
+
+Insert into Invite(Invite_Num,Invite_Date,Accept_Date,Member_Num)
+Values(1,CONVERT(varchar(20), '23-Feb-2016', 106),CONVERT(varchar(20), '27-Feb-2016', 106),211);
+
+Insert into Invite(Invite_Num,Invite_Date,Accept_Date,Member_Num)
+Values(2,CONVERT(varchar(20), '12-Mar-2016', 106),CONVERT(varchar(20), '15-Mar-2016', 106),212);
+
+Insert into Invite(Invite_Num,Invite_Date,Accept_Date,Member_Num)
+Values(3,CONVERT(varchar(20), '23-Feb-2016', 106),CONVERT(varchar(20), '27-Feb-2016', 106),213);
+
+Insert into Invite(Invite_Num,Invite_Date,Accept_Date,Member_Num)
+Values(4,CONVERT(varchar(20), '23-Feb-2016', 106),CONVERT(varchar(20), '27-Feb-2016', 106),214);
+
+Insert into Invite(Invite_Num,Invite_Date,Accept_Date,Member_Num)
+Values(5,CONVERT(varchar(20), '12-Mar-2016', 106),CONVERT(varchar(20), '15-Mar-2016', 106),215);
+
+Insert into Invite(Invite_Num,Invite_Date,Accept_Date,Member_Num)
+Values(6,CONVERT(varchar(20), '12-Mar-2016', 106),CONVERT(varchar(20), '15-Mar-2016', 106),216);
+
+Insert into Invite(Invite_Num,Invite_Date,Accept_Date,Member_Num)
+Values(7,CONVERT(varchar(20), '23-Feb-2016', 106),CONVERT(varchar(20), '27-Feb-2016', 106),217);
+
+Insert into Invite(Invite_Num,Invite_Date,Accept_Date,Member_Num)
+Values(8,CONVERT(varchar(20), '12-Mar-2016', 106),CONVERT(varchar(20), '15-Mar-2016', 106),218);
+
+Insert into Invite(Invite_Num,Invite_Date,Accept_Date,Member_Num)
+Values(9,CONVERT(varchar(20), '23-Feb-2016', 106),CONVERT(varchar(20), '27-Feb-2016', 106),219);
+
+Insert into Invite(Invite_Num,Invite_Date,Accept_Date,Member_Num)
+Values(10,CONVERT(varchar(20), '23-Feb-2016', 106),CONVERT(varchar(20), '27-Feb-2016', 106),220);
+
+
+
+Table name: Dinner
+
+Create Table Dinner(Dinner_Code varchar(50) not null Primary Key, Dinner_Description varchar(50)not null, Dinner_Attended varchar(5)not null,Dinner_Date varchar(20),Member_Num int not null Foreign Key References Members(Member_Num),Invite_Num int not null Foreign Key References Invite(Invite_Num));
+
+Insert into Dinner(Dinner_Code,Dinner_Description,Dinner_Attended,Dinner_Date,Member_Num,Invite_Num)
+Values('DI1','Glowing sea delight','Yes',CONVERT(varchar(20), '15-Mar-2016', 105),211,1);
+
+Insert into Dinner(Dinner_Code,Dinner_Description,Dinner_Attended,Dinner_Date,Member_Num,Invite_Num)
+Values('DI2','Glowing sea delight','Yes',CONVERT(varchar(20), '17-Mar-2016', 105),212,2);
+
+Insert into Dinner(Dinner_Code,Dinner_Description,Dinner_Attended,Dinner_Date,Member_Num,Invite_Num)
+Values('DI3','Ranch Superb','No',CONVERT(varchar(20), '15-Mar-2016', 105),213,3);
+
+Insert into Dinner(Dinner_Code,Dinner_Description,Dinner_Attended,Dinner_Date,Member_Num,Invite_Num)
+Values('DI4','Ranch Superb','Yes',CONVERT(varchar(20), '17-Mar-2016', 105),214,4);
+
+Insert into Dinner(Dinner_Code,Dinner_Description,Dinner_Attended,Dinner_Date,Member_Num,Invite_Num)
+Values('DI5','Glowing sea delight','Yes',CONVERT(varchar(20), '15-Mar-2016', 105),215,5);
+
+Insert into Dinner(Dinner_Code,Dinner_Description,Dinner_Attended,Dinner_Date,Member_Num,Invite_Num)
+Values('DI6','Sizzling Delicacy','No',CONVERT(varchar(20), '15-Mar-2016', 105),216,6);
+
+Insert into Dinner(Dinner_Code,Dinner_Description,Dinner_Attended,Dinner_Date,Member_Num,Invite_Num)
+Values('DI7','Sizzling Delicacy','No',CONVERT(varchar(20), '17-Mar-2016', 105),217,7);
+
+Insert into Dinner(Dinner_Code,Dinner_Description,Dinner_Attended,Dinner_Date,Member_Num,Invite_Num)
+Values('DI8','Sweet Spicy food','Yes',CONVERT(varchar(20), '15-Mar-2016', 105),218,8);
+
+Insert into Dinner(Dinner_Code,Dinner_Description,Dinner_Attended,Dinner_Date,Member_Num,Invite_Num)
+Values('DI9','Sweet Spicy food','Yes',CONVERT(varchar(20), '15-Mar-2016', 105),219,9);
+
+Insert into Dinner(Dinner_Code,Dinner_Description,Dinner_Attended,Dinner_Date,Member_Num,Invite_Num)
+Values('DI20','Sizzling Delicacy','Yes',CONVERT(varchar(20), '17-Mar-2016', 105),220,10);
+
+
+Table name: Entre
+
+Create Table Entree(Entree_Code varchar(50) not null Primary Key,Entree_Description varchar(50) not null,Member_Num int not null Foreign Key References Members(Member_Num),Invite_Num int not null Foreign Key References Invite(Invite_Num),Dinner_Code varchar(50) not null Foreign Key References Dinner(Dinner_Code));
+
+Insert into Entree(Entree_Code,Entree_Description,Member_Num,Invite_Num,Dinner_Code)
+Values('EN3','Stuffed crab',211,1,'DI1');
+
+Insert into Entree(Entree_Code,Entree_Description,Member_Num,Invite_Num,Dinner_Code)
+Values('EN5','Roasted duck',212,2,'DI2');
+
+Insert into Entree(Entree_Code,Entree_Description,Member_Num,Invite_Num,Dinner_Code)
+Values('EN2','Marinated Steak',213,3,'DI3');
+
+Insert into Entree(Entree_Code,Entree_Description,Member_Num,Invite_Num,Dinner_Code)
+Values('EN9','Garlic Butter Shrimp',214,4,'DI4');
+
+Insert into Entree(Entree_Code,Entree_Description,Member_Num,Invite_Num,Dinner_Code)
+Values('EN7','Spicy Chicken Biryani',215,5,'DI5');
+
+Insert into Entree(Entree_Code,Entree_Description,Member_Num,Invite_Num,Dinner_Code)
+Values('EN6','Spicy Chicken Masala',216,6,'DI6');
+
+Insert into Entree(Entree_Code,Entree_Description,Member_Num,Invite_Num,Dinner_Code)
+Values('EN0','Garlic Butter Shrimp',217,7,'DI7');
+
+Insert into Entree(Entree_Code,Entree_Description,Member_Num,Invite_Num,Dinner_Code)
+Values('EN4','Stuffed crab',218,8,'DI8');
+
+Insert into Entree(Entree_Code,Entree_Description,Member_Num,Invite_Num,Dinner_Code)
+Values('EN8','Lemon Garlic Butter',219,9,'DI9');
+
+Insert into Entree(Entree_Code,Entree_Description,Member_Num,Invite_Num,Dinner_Code)
+Values('EN1','Spicy Chicken Biryani',220,10,'DI20');
+
+
+Table name: Dessert
+
+Create Table Dessert(Dessert_Code varchar(50) not null Primary Key, Dessert_Description varchar(50) not null,Member_Num int not null Foreign Key References Members(Member_Num),Invite_Num int not null Foreign Key References Invite(Invite_Num),Dinner_Code varchar(50)not null Foreign Key References Dinner(Dinner_Code)); 
+
+Insert into Dessert(Dessert_Code,Dessert_Description,Member_Num,Invite_Num,Dinner_Code)
+Values('DE1','Chocolate mousse with raspberry sauce',211,1,'DI1');
+
+Insert into Dessert(Dessert_Code,Dessert_Description,Member_Num,Invite_Num,Dinner_Code)
+Values('DE2','Cherries jubilee',212,2,'DI2');
+
+Insert into Dessert(Dessert_Code,Dessert_Description,Member_Num,Invite_Num,Dinner_Code)
+Values('DE3','Apple pie with honey crust',213,3,'DI3');
+
+Insert into Dessert(Dessert_Code,Dessert_Description,Member_Num,Invite_Num,Dinner_Code)
+Values('DE4','Shahi Tukda',214,4,'DI4');
+
+Insert into Dessert(Dessert_Code,Dessert_Description,Member_Num,Invite_Num,Dinner_Code)
+Values('DE5','Puran Poli',215,5,'DI5');
+
+Insert into Dessert(Dessert_Code,Dessert_Description,Member_Num,Invite_Num,Dinner_Code)
+Values('DE6','Sugar Cookie Ice',216,6,'DI6');
+
+Insert into Dessert(Dessert_Code,Dessert_Description,Member_Num,Invite_Num,Dinner_Code)
+Values('DE7','Cherries jubilee',217,7,'DI7');
+
+Insert into Dessert(Dessert_Code,Dessert_Description,Member_Num,Invite_Num,Dinner_Code)
+Values('DE8','Butter Chapatti',218,8,'DI8');
+
+Insert into Dessert(Dessert_Code,Dessert_Description,Member_Num,Invite_Num,Dinner_Code)
+Values('DE9','Moist Holiday Chocolate',219,9,'DI9');
+
+Insert into Dessert(Dessert_Code,Dessert_Description,Member_Num,Invite_Num,Dinner_Code)
+Values('DE10','Keto Blue berry Cheese',220,10,'DI20');

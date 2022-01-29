@@ -1,0 +1,13 @@
+/****** Script for SelectTopNRows command from SSMS  ******/
+SELECT TOP (1000) [Member_Num]
+      ,[Member_Name]
+      ,[Invite_Num]
+      ,[Invite_Date]
+      ,[Accept_Date]
+      ,[Dinner_Code]
+      ,[Dinner_Description]
+      ,[Dinner_Attended]
+      ,[Dinner_Date]
+      ,[Dessert_Code]
+      ,[Dessert_Description]
+  FROM [DS_MINI_PROJECT].[dbo].[View_Table_ListofInvitedMemberAttended]
